@@ -10,11 +10,18 @@ import type { ReactNode } from "react";
 const AuthContext = createContext<AuthContextType | null>(null);
 
 
+
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (!context) throw new Error("useAuth must be used within an AuthProvider");
+
+  return context;
 }
 
 export const getTokenFromCookie = () => {
+  if (typeof document === "undefined") return "";
+  
   const cookies = document.cookie.split(";");
 
   const token = cookies.find(cookie => cookie.startsWith("token"))
