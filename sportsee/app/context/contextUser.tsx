@@ -10,7 +10,7 @@ interface UserContextType {
     firstName: string;
     lastName: string;
     totalDistance : number;
-    memberSince: string;
+    createdAt: string;
     photoProfile: string | null;
     isLoading: boolean;
 }
@@ -31,8 +31,10 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
     const [photoProfile, setPhotoProfile] = useState<string | null>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [totalDistance, setTotalDistance] = useState<number>(0);
+    const [createdAt, setCreatedAt] = useState<string>("");
+
     
-    let memberSince = ""
+    
 
     useEffect(() => {
         setIsLoading(true);
@@ -40,11 +42,12 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
         setLastName(MOCK_USER_INFO.profile.lastName);
         setPhotoProfile(MOCK_USER_INFO.profile.profilePicture);
         setTotalDistance(MOCK_USER_INFO.statistics.totalDistance);
+        setCreatedAt(MOCK_USER_INFO.profile.createdAt);
         setIsLoading(false);
     }, []);
 
     return (
-        <ContextUser.Provider value={{ firstName, lastName, photoProfile,  isLoading, totalDistance, memberSince }}>
+        <ContextUser.Provider value={{ firstName, lastName, photoProfile,  isLoading, totalDistance, createdAt }}>
             {children}
         </ContextUser.Provider>
     );
