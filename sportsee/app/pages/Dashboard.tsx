@@ -1,5 +1,5 @@
 import { useUser } from "../context/contextUser";
-import RecentPerformance from "../components/RecentPerformance";
+import RecentPerformance from "../components/charts/RecentPerformance/distanceChart/DistanceChart";
 
 export default function Dashboard() {
 

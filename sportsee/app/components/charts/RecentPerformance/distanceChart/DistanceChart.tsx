@@ -1,14 +1,9 @@
-import { MOCK_USER_ACTIVITY } from "../data/mockData";
+import { MOCK_USER_ACTIVITY } from "../../../../data/mockData";
 import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 export type UserPerformance = {
   distance: number;
-  heartRate: {
-    min: number;
-    max: number;
-    average: number;
-  };
   date: string;
 };
 
