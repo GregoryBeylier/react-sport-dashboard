@@ -1,5 +1,10 @@
-import { createContext, useContext, useState  } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
+import { MOCK_USER_INFO } from "../data/mockData";
+
+
+
+
 
 interface UserContextType {
     firstName: string;
@@ -28,6 +33,15 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
     const [totalDistance, setTotalDistance] = useState<number>(0);
     
     let memberSince = ""
+
+    useEffect(() => {
+        setIsLoading(true);
+        setFirstName(MOCK_USER_INFO.profile.firstName);
+        setLastName(MOCK_USER_INFO.profile.lastName);
+        setPhotoProfile(MOCK_USER_INFO.profile.profilePicture);
+        setTotalDistance(MOCK_USER_INFO.statistics.totalDistance);
+        setIsLoading(false);
+    }, []);
 
     return (
         <ContextUser.Provider value={{ firstName, lastName, photoProfile,  isLoading, totalDistance, memberSince }}>

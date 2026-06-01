@@ -9,7 +9,7 @@ export const MOCK_USER_INFO = {
     profilePicture: "http://localhost:8000/images/sophie.jpg",
   },
   statistics: {
-    totalDistance: "2250.2",
+    totalDistance: 2250.2,
     totalSessions: 348,
     totalDuration: 14625,
   }
