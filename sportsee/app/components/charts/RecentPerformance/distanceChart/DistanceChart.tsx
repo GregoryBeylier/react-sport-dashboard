@@ -7,7 +7,7 @@ export type UserPerformance = {
   date: string;
 };
 
-export default function RecentPerformance() {
+export default function DistanceChart() {
   const [activities, setActivities] = useState<UserPerformance[]>([]);
 
   const weekLyData = [

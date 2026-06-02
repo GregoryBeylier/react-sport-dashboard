@@ -1,5 +1,5 @@
 import { useUser } from "../context/contextUser";
-import RecentPerformance from "../components/charts/RecentPerformance/distanceChart/DistanceChart";
+import ChartsWrapper from "../components/charts/RecentPerformance/ChartsWrapper";
 
 export default function Dashboard() {
 
@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <img src={photoProfile || ""} alt={firstName} />
+      <img src={photoProfile || "/images/default_profile.png"} alt={firstName} />
       <div>
         <p>{firstName} {lastName}</p>
         <p>Membre depuis le {createdAt}</p>
@@ -20,7 +20,7 @@ export default function Dashboard() {
         <p>Distance totale parcourue {totalDistance} km</p>
       </div>
       <div>
-      <RecentPerformance />
+      <ChartsWrapper />
       </div>
     </div>
 
