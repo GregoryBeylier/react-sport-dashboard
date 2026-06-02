@@ -14,7 +14,7 @@ export default function DonnutChart() {
     }, [])
     
     const donutData = [
-  { name: "Réalisées", value: weeklyGoal?.completed },
+  { name: "Réalisées", value: weeklyGoal?.completed ?? 0},
   { name: "Restantes", value: (weeklyGoal?.target ?? 0) - (weeklyGoal?.completed ?? 0)},
 ]
     return (

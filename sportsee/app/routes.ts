@@ -8,7 +8,6 @@ export default [
         route("/profile", "pages/Profile.tsx"),
     ]),
 // ]),
-  index("pages/home.tsx"),
-  route("/login", "pages/login.tsx"),
+  index("pages/login.tsx"),
   route("*", "pages/page404.tsx")
 ] satisfies RouteConfig

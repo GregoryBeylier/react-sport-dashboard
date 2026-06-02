@@ -1,11 +1,18 @@
 import { Link } from "react-router"
 import {useAuth } from "../../../context/authContext"
+import { useNavigate } from "react-router"
 
 
 
 export default function Header() {
    
-     const { logout } = useAuth()
+     const  { logout } = useAuth()
+     const navigate = useNavigate()
+
+     function sessionDestroy(){
+        logout()
+        navigate("/");
+     }
    
     return (
         <div>
@@ -15,7 +22,7 @@ export default function Header() {
             <nav>
                 <Link to ="/dashboard">Dashboard</Link>
                 <Link to="/profile">Mon profile</Link>
-                <button onClick={logout}>Se déconnecter</button>
+                <button onClick={sessionDestroy}>Se déconnecter</button>
             </nav>
         </div>
 
