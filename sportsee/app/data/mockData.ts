@@ -12,7 +12,11 @@ export const MOCK_USER_INFO = {
     totalDistance: 2250.2,
     totalSessions: 348,
     totalDuration: 14625,
-  }
+  },
+  weeklyGoal: {
+  completed: 4,
+  target: 6,
+}
 };
 
 export const MOCK_USER_ACTIVITY = [

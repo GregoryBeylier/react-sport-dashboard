@@ -11,3 +11,9 @@ export type UserActivity = {
   heartRate: HeartRate;
   caloriesBurned: number;
 };
+
+export type WeeklyGoal = {
+  completed: number;
+  target: number,
+}
+
