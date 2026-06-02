@@ -1,5 +1,6 @@
 import { useUser } from "../context/contextUser";
 import ChartsWrapper from "../components/charts/RecentPerformance/ChartsWrapper";
+import StatsWrapper from "../components/charts/WeeklyStats/WeeklyStats";
 
 export default function Dashboard() {
 
@@ -21,6 +22,7 @@ export default function Dashboard() {
       </div>
       <div>
       <ChartsWrapper />
+      <StatsWrapper />
       </div>
     </div>
 
