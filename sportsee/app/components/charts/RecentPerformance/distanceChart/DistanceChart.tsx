@@ -1,15 +1,12 @@
 import { MOCK_USER_ACTIVITY } from "../../../../data/mockData";
 import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
-
-export type UserPerformance = {
-  distance: number;
-  date: string;
-};
+import type { UserActivity } from "../../../../types/Type";
 
 export default function DistanceChart() {
-  const [activities, setActivities] = useState<UserPerformance[]>([]);
+  const [activities, setActivities] = useState<UserActivity[]>([]);
 
+  // TODO: calculer dynamiquement depuis activities
   const weekLyData = [
     { semaine: "S1", distance: 9 },
     { semaine: "S2", distance: 13.9 },

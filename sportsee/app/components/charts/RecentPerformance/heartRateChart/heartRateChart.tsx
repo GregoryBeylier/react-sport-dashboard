@@ -10,25 +10,26 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-
-export type userHeartRateChart = {
-  date: string;
-  heartRate: {
-    min: number;
-    max: number;
-    average: number;
-  };
-};
+import type { UserActivity } from "../../../../types/Type";
 
 export default function HeartRateChart() {
-  const [heartRates, setHeartRates] = useState<userHeartRateChart[]>([]);
+  const [heartRates, setHeartRates] = useState<UserActivity[]>([]);
 
   useEffect(() => {
     setHeartRates(MOCK_USER_ACTIVITY);
   }, []);
 
   return (
-    <ComposedChart width={400} height={300} data={heartRates}>
+    <ComposedChart
+      width={400}
+      height={300}
+      data={heartRates.map((activity) => ({
+        date: activity.date,
+        min: activity.heartRate.min,
+        max: activity.heartRate.max,
+        average: activity.heartRate.average,
+      }))}
+    >
       <CartesianGrid stroke="#f5f5f5" />
       <XAxis
         dataKey="date"
@@ -42,10 +43,9 @@ export default function HeartRateChart() {
       <YAxis type="number" />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="heartRate.average" stroke="#8884d8" />
-      <Bar dataKey="heartRate.min" barSize={20} fill="#413ea0" />
-      <Bar dataKey="heartRate.max" barSize={20} fill="#ff0000" />
-      
+      <Line type="monotone" dataKey="average" stroke="#8884d8" />
+      <Bar dataKey="min" barSize={20} fill="#413ea0" />
+      <Bar dataKey="max" barSize={20} fill="#ff0000" />
     </ComposedChart>
   );
 }
