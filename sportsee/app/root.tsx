@@ -8,6 +8,7 @@ import {
 } from "react-router";
 import { AuthProvider }  from "./context/authContext";
 import { UserProvider } from "./context/contextUser";
+import "./app.css"
 
 
 
