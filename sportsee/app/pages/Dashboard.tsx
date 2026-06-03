@@ -3,8 +3,14 @@ import ChartsWrapper from "../components/charts/RecentPerformance/ChartsWrapper"
 import StatsWrapper from "../components/charts/WeeklyStats/WeeklyStats";
 
 export default function Dashboard() {
-
-  const { firstName, lastName, isLoading, createdAt, totalDistance, photoProfile} = useUser();
+  const {
+    firstName,
+    lastName,
+    isLoading,
+    createdAt,
+    totalDistance,
+    photoProfile,
+  } = useUser();
 
   if (isLoading) {
     return <div>Chargement...</div>;
@@ -12,22 +18,23 @@ export default function Dashboard() {
 
   return (
     <div>
-      <img src={photoProfile || "/images/default_profile.png"} alt={firstName} />
+      <img
+        src={photoProfile || "/images/default_profile.png"}
+        alt={firstName}
+      />
       <div>
-        <p>{firstName} {lastName}</p>
+        <p>
+          {firstName} {lastName}
+        </p>
         <p>Membre depuis le {createdAt}</p>
       </div>
       <div>
         <p>Distance totale parcourue {totalDistance} km</p>
       </div>
       <div>
-      <ChartsWrapper />
-      <StatsWrapper />
+        <ChartsWrapper />
+        <StatsWrapper />
       </div>
     </div>
-
   );
 }
-
-
-

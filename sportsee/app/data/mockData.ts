@@ -6,12 +6,14 @@ export const MOCK_USER_INFO = {
     age: 32,
     weight: 60,
     height: 165,
+    gender: "femme",
     profilePicture: "http://localhost:8000/images/sophie.jpg",
   },
   statistics: {
     totalDistance: 2250.2,
     totalSessions: 348,
     totalDuration: 14625,
+    restDays: 9,
   },
   weeklyGoal: {
   completed: 4,
