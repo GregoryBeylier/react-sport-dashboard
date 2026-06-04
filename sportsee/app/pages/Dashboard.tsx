@@ -2,8 +2,8 @@ import { useUser } from "../context/contextUser";
 import ChartsWrapper from "../components/charts/RecentPerformance/ChartsWrapper";
 import StatsWrapper from "../components/charts/WeeklyStats/WeeklyStats";
 import styles from "./Dashboard.module.css";
-import defaultPhoto from "../assets/images/default_profile.png"
-import runIcon from "../assets/images/OUTLINE.png"
+import defaultPhoto from "../assets/images/default_profile.png";
+import runIcon from "../assets/images/OUTLINE.png";
 
 export default function Dashboard() {
   const {
@@ -20,41 +20,42 @@ export default function Dashboard() {
   }
 
   return (
-  <div className={styles.dashboard}>
+    <div className={styles.dashboard}>
+      {/* Carte profil */}
+      <div className={styles.profileCard}>
+        {/* Groupe gauche : photo + infos */}
+        <div className={styles.profileLeft}>
+          <img src={defaultPhoto} alt={firstName} />
+          <div className={styles.profileInfo}>
+            <p>
+              {firstName} {lastName}
+            </p>
+            <p>Membre depuis le {createdAt}</p>
+          </div>
+        </div>
 
-    {/* Carte profil */}
-    <div className={styles.profileCard}>
-
-      {/* Groupe gauche : photo + infos */}
-      <div className={styles.profileLeft}>
-        <img src={defaultPhoto} alt={firstName} />
-        <div className={styles.profileInfo}>
-          <p>{firstName} {lastName}</p>
-          <p>Membre depuis le {createdAt}</p>
+        {/* Statistique à droite */}
+        <div className={styles.profileStat}>
+          <p>Distance totale parcourue</p>
+          <div className={styles.profileStatValue}>
+            <img src={runIcon} alt="icône course" />
+            <span>{totalDistance} km</span>
+          </div>
         </div>
       </div>
 
-      {/* Statistique à droite */}
-      <div className={styles.profileStat}>
-        <p>Distance totale parcourue</p>
-        <div className={styles.profileStatValue}>
-          <img src={runIcon} alt="icône course" />
-          <span>{totalDistance} km</span>
+      {/* Graphiques */}
+      <div className={styles.lastPerformancesSection}>
+        <h2 className={styles.sectionTitle}>Vos dernières performances</h2>
+        <div className={styles.lastPerformances}>
+          <ChartsWrapper />
         </div>
       </div>
 
+      {/* Stats hebdomadaires */}
+      <div className={styles.weeklyStats}>
+        <StatsWrapper />
+      </div>
     </div>
-
-    {/* Graphiques */}
-    <div className={styles.lastPerformances}>
-      <ChartsWrapper />
-    </div>
-
-    {/* Stats hebdomadaires */}
-    <div className={styles.weeklyStats}>
-      <StatsWrapper />
-    </div>
-
-  </div>
-);
+  );
 }
