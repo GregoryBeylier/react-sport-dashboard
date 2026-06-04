@@ -11,6 +11,7 @@ import {
   Legend,
 } from "recharts";
 import type { UserActivity } from "../../../../types/Type";
+import styles from "./HeartRateChart.module.css";
 
 export default function HeartRateChart() {
   const [heartRates, setHeartRates] = useState<UserActivity[]>([]);
@@ -20,6 +21,7 @@ export default function HeartRateChart() {
   }, []);
 
   return (
+    <div className={styles.heartRateChart}>
     <ComposedChart
       width={400}
       height={300}
@@ -47,5 +49,6 @@ export default function HeartRateChart() {
       <Bar dataKey="min" barSize={20} fill="#413ea0" />
       <Bar dataKey="max" barSize={20} fill="#ff0000" />
     </ComposedChart>
+    </div>
   );
 }

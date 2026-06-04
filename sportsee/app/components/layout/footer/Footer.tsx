@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css";
-import incoLogo from "../../../public/images/Iconlogo.png";
+import incoLogo from "../../../assets/images/Iconlogo.png";
 
 export default function Footer() {
   return (

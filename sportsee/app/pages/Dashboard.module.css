@@ -1,0 +1,83 @@
+.dashboard {
+ display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+  align-items: center;
+  
+}
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: none;
+  width: 1052px;
+    background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,    /* blanc opaque en haut */
+    rgba(255, 255, 255, 0) 100%   /* transparent en bas */
+  );
+}
+
+
+.profileLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profileCard img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.profileInfo p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.profileInfo p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.profileStat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profileStat p {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.profileStatValue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #3B1EF8;
+  color: white;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.profileStatValue img {
+  width: 34px;
+  height: 34px;
+}
+
+.lastPerformances {
+  display: flex;
+  gap: 24px;
+}

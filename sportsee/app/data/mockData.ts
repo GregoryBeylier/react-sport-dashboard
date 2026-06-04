@@ -7,7 +7,7 @@ export const MOCK_USER_INFO = {
     weight: 60,
     height: 165,
     gender: "femme",
-    profilePicture: "http://localhost:8000/images/sophie.jpg",
+    profilePicture: null,
   },
   statistics: {
     totalDistance: 2250.2,

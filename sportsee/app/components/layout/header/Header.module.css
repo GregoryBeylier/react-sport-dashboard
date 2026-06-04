@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 49px;
+  height: 80px;
 }
 
 .nav {
@@ -12,13 +12,11 @@
   background-color: white;
   gap: 40px;
   padding: 10px 20px;
-  margin-top : 35px;
   margin-right: 150px;
 }
 
 .SportSee {
     margin-left: 150px;
-    margin-top: 48px;
 }
      
 .logoutBtn {

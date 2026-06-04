@@ -2,6 +2,7 @@ import { MOCK_USER_ACTIVITY } from "../../../../data/mockData";
 import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import type { UserActivity } from "../../../../types/Type";
+import styles from "./DistanceChart.module.css";
 
 export default function DistanceChart() {
   const [activities, setActivities] = useState<UserActivity[]>([]);
@@ -19,6 +20,7 @@ export default function DistanceChart() {
   }, []);
   
   return (
+    <div className={styles.distanceChart}>
     <BarChart width={400} height={300} data={weekLyData}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="semaine" />
@@ -26,5 +28,7 @@ export default function DistanceChart() {
       <Tooltip />
       <Bar dataKey="distance" fill="#8884d8" />
     </BarChart>
+    </div>
+
   );
 }

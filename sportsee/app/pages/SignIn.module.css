@@ -11,6 +11,22 @@
 .right {
   width: 50%;
   overflow: hidden;
+  position: relative
+}
+
+.bubble {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 16px;
+  width: 288px;
+  color:#0B23F4;
+  font-family: "Inter";
+  font-size: 12px;
+  text-align:center;
 }
 
 .right img {
@@ -27,7 +43,7 @@
   flex-direction: column;
   width: 398px;
   height: 617px;
-  margin: 151px 134px 177px 100px
+  margin: 151px 134px 177px 100px;
 }
 
 input {

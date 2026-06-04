@@ -1,8 +1,8 @@
 import { Link } from "react-router"
 import {useAuth } from "../../../context/authContext"
 import { useNavigate } from "react-router"
-import styles from "./Header.module.css"
-import logo from "../../../public/images/Logo.png";
+import styles from "./Header.module.css";
+import logo from "../../../assets/images/Logo.png";
 
 
 

@@ -20,7 +20,7 @@ export default function Login() {
   }
 
   return (
-   <div className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.left}>
         <img src={Logo} alt="SportSee logo" />
         <div className={styles.card}>
@@ -46,6 +46,10 @@ export default function Login() {
       </div>
       <div className={styles.right}>
         <img src={signInImage} alt="Coureurs" />
+        <div className={styles.bubble}>
+          Analysez vos performances en un clin d’œil, suivez vos progrès et
+          atteignez vos objectifs.
+        </div>
       </div>
     </div>
   );
