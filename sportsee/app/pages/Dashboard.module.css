@@ -18,7 +18,7 @@
   border-radius: 12px;
   padding: 20px 30px;
   box-shadow: none;
-  width: 1052px;
+  width: 1102px;
   height: 181px;
     background: linear-gradient(
     to bottom,
@@ -31,7 +31,7 @@
 .profileLeft {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 50px;
 }
 
 .profileCard img {
@@ -48,8 +48,19 @@
 }
 
 .profileInfo p:first-child {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
+   font-size: 22px;
+   font-family: "Inter";
+}
+
+.profileInfo p:last-child {
+  /* Style pour "Membre depuis..." */
+  font-size: 14px;      
+  font-weight: 400;     
+  color: #707070; 
+  font-family: "Inter";         
+  margin-top:4px;
 }
 
 .profileStat {
