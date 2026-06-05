@@ -25,8 +25,18 @@ export default function StatsWrapper() {
           <DonnutChart />
         </div>
         <div className={styles.statsRight}>
-          <StatsCard label="Durée" value={totalDuration} unit="minutes" />
-          <StatsCard label="Distance" value={totalDistance} unit="kilomètres" />
+          <StatsCard
+            label="Durée d’activité"
+            value={totalDuration}
+            unit="minutes"
+            type="duration"
+          />
+          <StatsCard
+            label="Distance"
+            value={totalDistance}
+            unit="kilomètres"
+            type="distance"
+          />
         </div>
       </div>
     </div>

@@ -6,21 +6,45 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
+  padding-left: 45px;
+  
 }
 
 .label {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 14px;
+  color: #707070;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  font-family: "Inter"
 }
 
 .value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #4A90E2;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Inter";
 }
 
 .unit {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 400;
+  font-size: 16px;
+  color: #999;
+  font-weight: 500;
+  margin-left: 0.25rem;
+  font-family: "Inter"
+}
+
+
+.card.duration .value {
+  color: #4a6cf7;
+}
+
+.card.duration .unit {
+  color: #b6bdfc;
+}
+
+.card.distance .value {
+  color: #ff6b35;
+}
+
+.card.distance .unit {
+  color: #ffb399;
 }
