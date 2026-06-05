@@ -72,9 +72,9 @@ export default function DistanceChart() {
             axisLine={true}
             tickLine={false}
             tick={{ dy: 10, fontSize: 12 }}
-            padding={{ left: 10 }} // ← ajoute ça
+            padding={{ left: 10 }} 
           />
-          <YAxis axisLine={true} tickLine={false} tick={{ fontSize: 10 }} />
+          <YAxis axisLine={true} tickLine={false} tick={{ fontSize: 10 }}  />
           <Tooltip cursor={false} />
           <Bar
             dataKey="distance"

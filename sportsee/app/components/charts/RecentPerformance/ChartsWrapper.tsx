@@ -1,5 +1,5 @@
 import DistanceChart from "./distanceChart/DistanceChart";
-import HeartRateChart from "./heartRateChart/HeartRateChart";
+import HeartRateChart from "./HeartRateChart/HeartRateChart";
 import styles from "./ChartsWrapper.module.css"
 
 export default function ChartsWrapper() {

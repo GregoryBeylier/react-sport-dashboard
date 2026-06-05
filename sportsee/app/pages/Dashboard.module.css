@@ -19,6 +19,7 @@
   padding: 20px 30px;
   box-shadow: none;
   width: 1052px;
+  height: 181px;
     background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 1) 0%,    /* blanc opaque en haut */
@@ -34,8 +35,8 @@
 }
 
 .profileCard img {
-  width: 70px;
-  height: 70px;
+  width: 104px;
+  height: 117px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -55,6 +56,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
+   font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter";
 }
 
 .profileStat p {
@@ -69,10 +73,13 @@
   gap: 10px;
   background-color: #3B1EF8;
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px 24px;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 22px;
+  font-family: "Inter";
+  font-weight: 500;
+  width: 183px;
+  height: 90px;
 }
 
 .profileStatValue img {
