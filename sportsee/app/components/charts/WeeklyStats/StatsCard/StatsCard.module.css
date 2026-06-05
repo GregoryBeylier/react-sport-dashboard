@@ -1,0 +1,26 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4A90E2;
+}
+
+.unit {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 400;
+}
