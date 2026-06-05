@@ -48,3 +48,31 @@
 .card.distance .unit {
   color: #ffb399;
 }
+
+/* ── VARIANTE PROFIL (fond bleu) ── */
+.profileVariant {
+  background-color: #3d3ddb;
+}
+
+.profileVariant .label {
+  color: #ffffff;
+}
+
+.profileVariant .value {
+  color: #ffffff;
+}
+
+.profileVariant .unit {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Quand variant="profile" → tout en blanc, peu importe le type */
+.profileVariant.card.duration .value,
+.profileVariant.card.distance .value {
+  color: #ffffff;
+}
+
+.profileVariant.card.duration .unit,
+.profileVariant.card.distance .unit {
+  color: rgba(255, 255, 255, 0.7);
+}

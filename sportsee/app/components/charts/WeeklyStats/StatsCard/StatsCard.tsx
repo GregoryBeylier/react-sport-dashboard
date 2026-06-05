@@ -5,12 +5,13 @@ export type StatsCardProps = {
  label: string;
  value: number;
  unit: string;
- type: "duration" | "distance";
+ type: string;
+ variant?: "default" | "profile";
 };
 
-export default function StatsCard({ label, value, unit, type }: StatsCardProps) {
-    return (
-     <div className={`${styles.card} ${styles[type]}`}>
+export default function StatsCard({ label, value, unit, type, variant = "default" }: StatsCardProps) {
+  return (
+    <div className={`${styles.card} ${styles[type]} ${variant === "profile" ? styles.profileVariant : ""}`}>
       <span className={styles.label}>{label}</span>
       <div>
         <span className={styles.value}>{value}</span>
@@ -18,6 +19,4 @@ export default function StatsCard({ label, value, unit, type }: StatsCardProps) 
       </div>
     </div>
   );
-  
-
 }

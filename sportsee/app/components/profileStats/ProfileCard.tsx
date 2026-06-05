@@ -1,3 +1,5 @@
+import styles from "./ProfileCard.module.css"
+
 export type ProfileCardProps = {
   age: number;
   weight: number;
@@ -13,10 +15,10 @@ export default function ProfileCard({
 }: ProfileCardProps) {
   return (
     <div>
-      <p>Âge : {age} </p> 
-      <p>Genre : {gender}</p> 
-      <p>Taille : {Math.floor(height / 100)}m{height % 100}</p>
-      <p>Poids : {weight} kg</p>
+      <p className={styles.info}>Âge : {age} </p> 
+      <p className={styles.info}>Genre : {gender}</p> 
+      <p className={styles.info}>Taille : {Math.floor(height / 100)}m{height % 100}</p>
+      <p className={styles.info}>Poids : {weight} kg</p>
     </div>
   );
 }

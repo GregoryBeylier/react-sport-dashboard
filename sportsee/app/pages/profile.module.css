@@ -1,0 +1,100 @@
+/* ── PAGE GÉNÉRALE ── */
+.profilePage {
+  display: flex;
+  gap: 48px;
+  padding: 40px 60px;
+  max-width: 1440px;
+  width: 100%;
+  align-items: flex-start;
+  margin: 0 auto;
+  
+}
+
+/* ── COLONNE GAUCHE ── */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 508px;
+  flex-shrink: 0;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  
+}
+
+.cardProfile {
+  height: 331px;
+  
+}
+
+/* Card avatar */
+.avatarCard {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 165px;
+}
+
+.avatar {
+  width: 104px;
+  height: 117px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-left: 34px;
+}
+
+.userName {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  font-family: "Inter";
+}
+
+.memberSince {
+  font-size: 0.85rem;
+  color: #707070;
+  margin: 4px 0 0 0;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Card profil */
+.profileTitle {
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Inter";
+  margin: 20px 0 24px 28px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 0 0 16px 25px;
+  width: 424px;
+}
+
+/* ── COLONNE DROITE ── */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.statsTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.statsSubtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 4px 0 0 0;
+}
