@@ -12,7 +12,7 @@ export default function StatsSection() {
 
   return (
     <div className={styles.grid}>
-      <StatsCard label="Temps total couru" value={totalDuration} unit="min" type="duration" variant="profile" />
+      <StatsCard label="Temps total couru" value={totalDuration} unit="min" type="duree" variant="profile" />
       <StatsCard label="Calories brûlées" value={totalCalorieBurned} unit="cal" type="calories" variant="profile" />
       <StatsCard label="Distance totale parcourue" value={totalDistance} unit="km" type="distance" variant="profile" />
       <StatsCard label="Nombre de jours de repos" value={restDays} unit="jours" type="rest" variant="profile" />

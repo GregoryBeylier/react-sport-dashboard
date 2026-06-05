@@ -15,14 +15,14 @@ export default function StatsCard({ label, value, unit, type, variant = "default
   const minutes = value % 60;
 
   
- const displayValue = type === "duration" ? (
+ const displayValue = type === "duree" ? (
   <>
     {hours}<span className={styles.unitH}>h</span>
     <span className={styles.unitMin}> {minutes}min</span>
   </>
 ) : value;
 
-  const displayUnit = type === "duration" ? "" : unit; 
+  const displayUnit = type === "duree" ? "" : unit; 
 
   return (
     <div className={`${styles.card} ${styles[type]} ${variant === "profile" ? styles.profileVariant : ""}`}>

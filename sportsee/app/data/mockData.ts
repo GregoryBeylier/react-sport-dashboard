@@ -23,7 +23,7 @@ export const MOCK_USER_INFO = {
 
 export const MOCK_USER_ACTIVITY = [
   {
-    date: "2025-01-06",
+    date: "2026-06-01",
     distance: 5.8,
     duration: 38,
     heartRate: {
@@ -34,7 +34,7 @@ export const MOCK_USER_ACTIVITY = [
     caloriesBurned: 422,
   },
   {
-    date: "2025-01-07",
+    date: "2026-06-02",
     distance: 3.2,
     duration: 20,
     heartRate: {
@@ -45,7 +45,7 @@ export const MOCK_USER_ACTIVITY = [
     caloriesBurned: 248,
   },
   {
-    date: "2025-01-08",
+    date: "2026-06-03",
     distance: 6.4,
     duration: 42,
     heartRate: {
@@ -56,7 +56,7 @@ export const MOCK_USER_ACTIVITY = [
     caloriesBurned: 468,
   },
   {
-    date: "2025-01-09",
+    date: "2026-06-04",
     distance: 7.5,
     duration: 50,
     heartRate: {
@@ -67,7 +67,7 @@ export const MOCK_USER_ACTIVITY = [
     caloriesBurned: 532,
   },
   {
-    date: "2025-01-10",
+    date: "2026-06-05",
     distance: 5.1,
     duration: 34,
     heartRate: {
@@ -78,7 +78,7 @@ export const MOCK_USER_ACTIVITY = [
     caloriesBurned: 378,
   },
   {
-    date: "2025-01-11",
+    date: "2026-06-06",
     distance: 4.8,
     duration: 32,
     heartRate: {
@@ -89,7 +89,7 @@ export const MOCK_USER_ACTIVITY = [
     caloriesBurned: 352,
   },
   {
-    date: "2025-01-12",
+    date: "2026-06-07",
     distance: 3.5,
     duration: 22,
     heartRate: {

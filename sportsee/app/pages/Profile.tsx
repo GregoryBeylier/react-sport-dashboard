@@ -16,10 +16,9 @@ export default function Profile() {
   return (
      <div className={styles.profilePage}>
 
-      {/* ── COLONNE GAUCHE ── */}
+     
       <div className={styles.leftColumn}>
 
-        {/* Card avatar */}
         <div className={`${styles.card} ${styles.avatarCard}`}>
           <img
             src={defaultPhoto}
@@ -32,7 +31,7 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Card profil */}
+   
         <div className={`${styles.card} ${styles.cardProfile}`}>
           <p className={styles.profileTitle}>Votre profil</p>
           <hr className={styles.divider} />
@@ -41,7 +40,7 @@ export default function Profile() {
 
       </div>
 
-      {/* ── COLONNE DROITE ── */}
+   
       <div className={styles.rightColumn}>
         <p className={styles.statsTitle}>Vos statistiques</p>
         <p className={styles.statsSubtitle}>depuis le {createdAt}</p>
