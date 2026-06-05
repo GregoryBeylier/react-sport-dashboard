@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  height: 165px;
+  height: 120px;
 }
 
 .avatar {
@@ -82,19 +82,25 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   flex: 1;
 }
 
 .statsTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1a1a1a;
   margin: 0;
+  margin-left: 57px ;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Inter";
+  margin-bottom: 1px;
 }
 
 .statsSubtitle {
-  font-size: 0.85rem;
-  color: #888;
-  margin: 4px 0 0 0;
+  color: #707070;
+  margin: 2px 0 0 0;
+  margin: 0;
+  margin-left: 57px ;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter";
+  margin-bottom: 32px;
 }

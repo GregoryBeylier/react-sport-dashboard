@@ -51,19 +51,28 @@
 
 /* ── VARIANTE PROFIL (fond bleu) ── */
 .profileVariant {
-  background-color: #3d3ddb;
+  background-color: #0B23F4;
 }
 
 .profileVariant .label {
   color: #ffffff;
+  font-weight: 400;
+  font-family: "Inter";
+  font-size: 14px;
 }
 
 .profileVariant .value {
   color: #ffffff;
+  font-weight: 500;
+  font-family: "Inter";
+  font-size: 22px;
 }
 
 .profileVariant .unit {
   color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-family: "Inter";
+  font-size: 16px;
 }
 
 /* Quand variant="profile" → tout en blanc, peu importe le type */
@@ -74,5 +83,23 @@
 
 .profileVariant.card.duration .unit,
 .profileVariant.card.distance .unit {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.unitH {
+  font-size: 1.2rem;   /* même taille que la valeur */
+  font-weight: 700;
+  color: white;
+}
+
+.unitH {
+  font-size: 22px;
+  font-weight: 500;
+  color: white; /* sera écrasé par profileVariant si besoin */
+}
+
+.unitMin {
+  font-size: 16px;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
 }
