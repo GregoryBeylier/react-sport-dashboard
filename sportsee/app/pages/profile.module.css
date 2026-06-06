@@ -39,12 +39,25 @@
   height: 120px;
 }
 
+.avatarWrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 104px;
+  height: 117px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
 .avatar {
   width: 104px;
   height: 117px;
   border-radius: 8px;
   object-fit: cover;
-  margin-left: 34px;
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
 }
 
 .userName {
@@ -104,3 +117,27 @@
   font-family: "Inter";
   margin-bottom: 32px;
 }
+
+.fadeIn {
+  -webkit-animation: fadeIn 0.8s 0.2s both;
+          animation: fadeIn 0.8s 0.2s both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

@@ -21,11 +21,11 @@ export default function Dashboard() {
 
   return (
     <div className={styles.dashboard}>
-      {/* Carte profil */}
       <div className={styles.profileCard}>
-        {/* Groupe gauche : photo + infos */}
         <div className={styles.profileLeft}>
-          <img src={defaultPhoto} alt={firstName} />
+          <div className={styles.avatarWrapper}>
+            <img src={defaultPhoto} alt={firstName} className={styles.avatar} />
+          </div>
           <div className={styles.profileInfo}>
             <p>
               {firstName} {lastName}

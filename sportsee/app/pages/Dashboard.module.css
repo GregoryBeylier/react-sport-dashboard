@@ -32,13 +32,28 @@
   display: flex;
   align-items: center;
   gap: 50px;
+  margin-bottom: 33px;
 }
 
-.profileCard img {
+.avatarWrapper {
+  overflow: hidden;
+  border-radius: 8px;
   width: 104px;
   height: 117px;
-  border-radius: 8px;
+  flex-shrink: 0;
+  margin-left: 34px;
+
+}
+
+.avatar {
+  width: 104px;
+  height: 117px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
 }
 
 .profileInfo p {
@@ -70,6 +85,7 @@
    font-size: 14px;
   font-weight: 400;
   font-family: "Inter";
+  margin-bottom: 30px;
 }
 
 .profileStat p {
@@ -89,8 +105,8 @@
   font-size: 22px;
   font-family: "Inter";
   font-weight: 500;
-  width: 183px;
-  height: 90px;
+  width: 170px;
+  height: 70px;
 }
 
 .profileStatValue img {
