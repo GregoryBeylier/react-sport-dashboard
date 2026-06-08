@@ -4,6 +4,7 @@ import StatsWrapper from "../components/charts/WeeklyStats/WeeklyStats";
 import styles from "./Dashboard.module.css";
 import defaultPhoto from "../assets/images/default_profile.png";
 import runIcon from "../assets/images/OUTLINE.png";
+import { formatDateLong } from "../utils/dateHelpers"
 
 export default function Dashboard() {
   const {
@@ -24,13 +25,13 @@ export default function Dashboard() {
       <div className={styles.profileCard}>
         <div className={styles.profileLeft}>
           <div className={styles.avatarWrapper}>
-            <img src={defaultPhoto} alt={firstName} className={styles.avatar} />
+            <img src={photoProfile ?? defaultPhoto} alt={firstName} className={styles.avatar} />
           </div>
           <div className={styles.profileInfo}>
             <p>
               {firstName} {lastName}
             </p>
-            <p>Membre depuis le {createdAt}</p>
+            <p>Membre depuis le {createdAt ? formatDateLong(new Date(createdAt)) : ""}</p>
           </div>
         </div>
 

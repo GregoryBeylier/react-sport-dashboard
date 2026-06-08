@@ -13,10 +13,10 @@ export function getWeekRange(date: Date = new Date()): { monday: Date; sunday: D
   return { monday, sunday };
 }
 
-export function formatDateFR(date: Date): string {
+export function formatDateLong(date: Date): string {
   return date.toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "2-digit",
+    day: "numeric",
+    month: "long",
     year: "numeric",
   });
 }
