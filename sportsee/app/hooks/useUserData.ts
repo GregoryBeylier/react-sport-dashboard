@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import getUser from "../services/api"
+import fetchUserInfo  from "../services/api"
 import type { UserActivity } from "../types/Type"
+import { useAuth } from "../context/authContext"
 
 export type UserData = {
   id: string
@@ -19,17 +20,22 @@ export type UserData = {
 }
 
 export default function useUserData() {
+    const { authToken } = useAuth()
+
     const [userData, setUserData] = useState<UserData | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-   useEffect(() => {
+  useEffect(() => {
+    if (!authToken) return // ← si pas de token, on ne fait rien
     setIsLoading(true);
     async function fetchData() {
-        const data = await getUser("123")
+        const data = await fetchUserInfo(authToken!)
         setUserData(data)
         setIsLoading(false);
     }
     fetchData() 
-}, [])
+}, [authToken])
 return { userData, isLoading  }
 }
+
+
