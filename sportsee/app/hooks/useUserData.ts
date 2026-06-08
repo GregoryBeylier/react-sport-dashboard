@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react"
 import fetchUserInfo  from "../services/api"
-import type { UserActivity } from "../types/Type"
 import { useAuth } from "../context/authContext"
 
 export type UserData = {
-  id: string
-  weeklyGoal: number
-  userInfos: {
+profile: {
     firstName: string
     lastName: string
+    createdAt:string
     age: number
-    gender: string
-    profilePicture: string
-    height: number
     weight: number
-    createdAt: string
+    height: number
+    profilePicture: string
+}
+  statistics: {
+    totalDistance: string
+    totalSessions: number
+    totalDuration: number
   }
-  runningData: UserActivity[]
 }
 
 export default function useUserData() {
@@ -26,7 +26,7 @@ export default function useUserData() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!authToken) return // ← si pas de token, on ne fait rien
+    if (!authToken) return 
     setIsLoading(true);
     async function fetchData() {
         const data = await fetchUserInfo(authToken!)
@@ -37,5 +37,6 @@ export default function useUserData() {
 }, [authToken])
 return { userData, isLoading  }
 }
+
 
 

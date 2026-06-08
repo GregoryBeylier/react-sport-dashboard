@@ -1,8 +1,6 @@
 export function getWeekRange(date: Date = new Date()): { monday: Date; sunday: Date } {
   const currentDay = date.getDay();
-  // getDay() : 0 = dimanche, 1 = lundi, ..., 6 = samedi
 
-  // Calcul du décalage pour atteindre le lundi
   const diffToMonday = currentDay === 0 ? -6 : 1 - currentDay;
 
   const monday = new Date(date);
@@ -21,4 +19,8 @@ export function formatDateFR(date: Date): string {
     month: "2-digit",
     year: "numeric",
   });
+}
+
+export function formatDateISO(date: Date): string {
+  return date.toISOString().split("T")[0];
 }
