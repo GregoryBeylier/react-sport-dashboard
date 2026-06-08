@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import type { ReactNode } from "react";
 import useUserData from "../hooks/useUserData";
+import type { UserActivity } from "../hooks/useUserData";
 
 interface UserContextType {
   firstName: string;
@@ -9,6 +10,11 @@ interface UserContextType {
   createdAt: string;
   photoProfile: string | null;
   isLoading: boolean;
+  activityData: UserActivity[] | null 
+  weeklyGoal: number
+  age: number;
+  weight: number;
+  height: number;
 }
 
 const ContextUser = createContext<UserContextType | null>(null);
@@ -22,13 +28,17 @@ export function useUser() {
 }
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const { userData, isLoading } = useUserData();
+  const { userData, isLoading, activityData  } = useUserData();
 
   const firstName = userData?.profile?.firstName ?? "";
   const lastName = userData?.profile?.lastName ?? "";
   const photoProfile = userData?.profile?.profilePicture ?? null;
   const createdAt = userData?.profile?.createdAt ?? "";
   const totalDistance = parseFloat(userData?.statistics?.totalDistance ?? "0");
+  const weeklyGoal = 7  
+  const age = userData?.profile?.age ?? 0;
+  const weight = userData?.profile?.weight ?? 0;
+  const height = userData?.profile?.height ?? 0;
 
 
   return (
@@ -40,6 +50,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         isLoading,
         createdAt,
         totalDistance,
+        activityData,
+        weeklyGoal, 
+        age,
+        weight,
+        height
+    
       }}
     >
       {children}
