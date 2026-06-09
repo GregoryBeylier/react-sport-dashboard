@@ -8,6 +8,8 @@ import {
 } from "react-router";
 import { AuthProvider }  from "./context/authContext";
 import { UserProvider } from "./context/contextUser";
+import "./app.css"
+import iconLogo from "./assets/images/IconLogo.png";
 
 
 
@@ -15,6 +17,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", type: "image/png", href: iconLogo },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -33,6 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>SportSee</title>
         <Meta />
         <Links />
       </head>

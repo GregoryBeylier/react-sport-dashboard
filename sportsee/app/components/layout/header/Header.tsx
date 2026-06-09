@@ -1,6 +1,8 @@
 import { Link } from "react-router"
 import {useAuth } from "../../../context/authContext"
 import { useNavigate } from "react-router"
+import styles from "./Header.module.css";
+import logo from "../../../assets/images/Logo.png";
 
 
 
@@ -15,14 +17,14 @@ export default function Header() {
      }
    
     return (
-        <div>
-            <div>
-                <h1>logo</h1>
+        <div className={styles.header}>
+            <div className={styles.SportSee}>
+                <img src={logo} alt="SportSee logo" />
             </div>
-            <nav>
-                <Link to ="/dashboard">Dashboard</Link>
-                <Link to="/profile">Mon profile</Link>
-                <button onClick={sessionDestroy}>Se déconnecter</button>
+            <nav className={styles.nav}>
+                <Link to ="/dashboard" className={styles.navLink}>Dashboard</Link>
+                <Link to="/profile" className={styles.navLink}>Mon profile</Link>
+                <button className={styles.logoutBtn} onClick={sessionDestroy}>Se déconnecter</button>
             </nav>
         </div>
 

@@ -1,0 +1,130 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+  align-items: center;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: none;
+  width: 1102px;
+  height: 181px;
+    background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,    /* blanc opaque en haut */
+    rgba(255, 255, 255, 0) 100%   /* transparent en bas */
+  );
+}
+
+
+.profileLeft {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 33px;
+}
+
+.avatarWrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 104px;
+  height: 117px;
+  flex-shrink: 0;
+  margin-left: 34px;
+
+}
+
+.avatar {
+  width: 104px;
+  height: 117px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
+}
+
+.profileInfo p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.profileInfo p:first-child {
+  font-weight: 500;
+  font-size: 16px;
+   font-size: 22px;
+   font-family: "Inter";
+}
+
+.profileInfo p:last-child {
+  /* Style pour "Membre depuis..." */
+  font-size: 14px;      
+  font-weight: 400;     
+  color: #707070; 
+  font-family: "Inter";         
+  margin-top:4px;
+}
+
+.profileStat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+   font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter";
+  margin-bottom: 30px;
+}
+
+.profileStat p {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.profileStatValue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #3B1EF8;
+  color: white;
+  border-radius: 10px;
+  padding: 16px 24px;
+  font-size: 22px;
+  font-family: "Inter";
+  font-weight: 500;
+  width: 170px;
+  height: 70px;
+}
+
+.profileStatValue img {
+  width: 34px;
+  height: 34px;
+}
+
+.lastPerformances {
+  display: flex;
+  gap: 24px;
+  
+}
+
+.lastPerformancesSection {
+  margin-top: 108px
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-family: "Inter" ;
+}

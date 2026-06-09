@@ -6,7 +6,7 @@ export default function ProtectedRoute() {
     const { authToken } = useAuth();
 
     if (!authToken) {
-        return <Navigate to = "/login"/>
+        return <Navigate to = "/"/>
     } 
         return <Outlet/>
 }

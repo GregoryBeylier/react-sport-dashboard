@@ -1,0 +1,143 @@
+/* ── PAGE GÉNÉRALE ── */
+.profilePage {
+  display: flex;
+  gap: 48px;
+  padding: 40px 60px;
+  max-width: 1440px;
+  width: 100%;
+  align-items: flex-start;
+  margin: 0 auto;
+  
+}
+
+/* ── COLONNE GAUCHE ── */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 508px;
+  flex-shrink: 0;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  
+}
+
+.cardProfile {
+  height: 331px;
+  
+}
+
+/* Card avatar */
+.avatarCard {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 120px;
+}
+
+.avatarWrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 104px;
+  height: 117px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.avatar {
+  width: 104px;
+  height: 117px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
+}
+
+.userName {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  font-family: "Inter";
+}
+
+.memberSince {
+  font-size: 0.85rem;
+  color: #707070;
+  margin: 4px 0 0 0;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Card profil */
+.profileTitle {
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Inter";
+  margin: 20px 0 24px 28px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 0 0 16px 25px;
+  width: 424px;
+}
+
+/* ── COLONNE DROITE ── */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.statsTitle {
+  margin: 0;
+  margin-left: 57px ;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Inter";
+  margin-bottom: 1px;
+}
+
+.statsSubtitle {
+  color: #707070;
+  margin: 2px 0 0 0;
+  margin: 0;
+  margin-left: 57px ;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter";
+  margin-bottom: 32px;
+}
+
+.fadeIn {
+  -webkit-animation: fadeIn 0.8s 0.2s both;
+          animation: fadeIn 0.8s 0.2s both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
