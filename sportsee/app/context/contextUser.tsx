@@ -1,8 +1,7 @@
 import { createContext, useContext } from "react";
 import type { ReactNode } from "react";
 import useUserData from "../hooks/useUserData";
-import type { UserActivity } from "../hooks/useUserData";
-import type React from "react";
+
 
 interface UserContextType {
   firstName: string;
@@ -16,9 +15,6 @@ interface UserContextType {
   createdAt: string;
   photoProfile: string | null;
   isLoading: boolean;
-  weeklyGoal: number;
-  
-  
 }
 
 const ContextUser = createContext<UserContextType | null>(null);
@@ -42,13 +38,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const age = userData?.profile?.age ?? 0;
   const weight = userData?.profile?.weight ?? 0;
   const height = userData?.profile?.height ?? 0;
-  const weeklyGoal = 7;
+ 
 
   return (
     <ContextUser.Provider value={{
       firstName, lastName, photoProfile, isLoading, createdAt,
       totalDistance, totalSessions, totalDuration,
-      age, weight, height, weeklyGoal
+      age, weight, height
     }}>
       {children}
     </ContextUser.Provider>
