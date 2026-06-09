@@ -10,6 +10,7 @@ export type UserData = {
     age: number;
     weight: number;
     height: number;
+    gender: string;
     profilePicture: string;
   };
   statistics: {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../../context/authContext";
 import { fetchUserActivity } from "../../../../services/api";
 import { getWeekRange, formatDateShort } from "../../../../utils/dateHelpers";
-import type { UserActivity } from "../../../../types/Type";
+import type { UserActivity } from "../../../../hooks/useUserData";
 import {
   ComposedChart,
   Line,
