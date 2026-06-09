@@ -28,7 +28,6 @@
 
 .cardProfile {
   height: 331px;
-  
 }
 
 /* Card avatar */
@@ -122,6 +121,14 @@
   -webkit-animation: fadeIn 0.8s 0.2s both;
           animation: fadeIn 0.8s 0.2s both;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
 
 @-webkit-keyframes fadeIn {
   0% {

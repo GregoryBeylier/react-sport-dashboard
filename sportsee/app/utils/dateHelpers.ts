@@ -1,8 +1,6 @@
 export function getWeekRange(date: Date = new Date()): { monday: Date; sunday: Date } {
   const currentDay = date.getDay();
-  // getDay() : 0 = dimanche, 1 = lundi, ..., 6 = samedi
 
-  // Calcul du décalage pour atteindre le lundi
   const diffToMonday = currentDay === 0 ? -6 : 1 - currentDay;
 
   const monday = new Date(date);
@@ -15,10 +13,46 @@ export function getWeekRange(date: Date = new Date()): { monday: Date; sunday: D
   return { monday, sunday };
 }
 
-export function formatDateFR(date: Date): string {
+export function getFourWeekRange(date: Date = new Date()): { start: Date; end: Date } {
+  const currentDay = date.getDay();
+  const diffToMonday = currentDay === 0 ? -6 : 1 - currentDay;
+
+  // Lundi de la semaine courante
+  const currentMonday = new Date(date);
+  currentMonday.setDate(date.getDate() + diffToMonday);
+  currentMonday.setHours(0, 0, 0, 0);
+
+  // Lundi d’il y a 3 semaines
+  const start = new Date(currentMonday);
+  start.setDate(currentMonday.getDate() - 21); // 3 semaines = 21 jours
+
+  // Dimanche de la semaine courante
+  const end = new Date(currentMonday);
+  end.setDate(currentMonday.getDate() + 6);
+
+  return { start, end };
+}
+
+export function formatDateLong(date: Date): string {
   return date.toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "2-digit",
+    day: "numeric",
+    month: "long",
     year: "numeric",
   });
+}
+
+export function formatDateISO(date: Date): string {
+  return date.toISOString().split("T")[0];
+}
+
+export function formatDateShort(date: Date): string {
+  const months = [
+    "jan", "fév", "mar", "avr", "mai", "jun",
+    "jui", "août", "sep", "oct", "nov", "déc"
+  ];
+
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+
+  return `${day} ${month}`;
 }

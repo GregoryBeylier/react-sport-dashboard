@@ -5,17 +5,20 @@ import { useNavigate } from "react-router";
 import styles from "./SignIn.module.css";
 import signInImage from "../assets/images/SignIn.jpg";
 import Logo from "../assets/images/Logo.png";
+import {loginUser}  from "../services/api"
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useAuth();
+  const { login  } = useAuth();
   const navigate = useNavigate();
 
-  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
-    login("mock-token");
+
+    const data = await loginUser(username, password); 
+    login(data.token); 
     navigate("/dashboard");
   }
 
@@ -29,9 +32,9 @@ export default function Login() {
           <form onSubmit={handleSubmit}>
             <label>E-mail</label>
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <label>Mot de passe</label>
             <input

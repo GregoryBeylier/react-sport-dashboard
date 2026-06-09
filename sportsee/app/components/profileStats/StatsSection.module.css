@@ -6,3 +6,10 @@
   height: 103px;
   margin-left: 57px;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  padding: 20px;
+  text-align: center;
+}
