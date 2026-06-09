@@ -1,5 +1,8 @@
-import { MOCK_USER_ACTIVITY } from "../../../../data/mockData";
 import { useState, useEffect } from "react";
+import { useAuth } from "../../../../context/authContext";
+import { fetchUserActivity } from "../../../../services/api";
+import { getWeekRange, formatDateShort } from "../../../../utils/dateHelpers";
+import type { UserActivity } from "../../../../types/Type";
 import {
   ComposedChart,
   Line,
@@ -10,25 +13,69 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import type { UserActivity } from "../../../../types/Type";
 import styles from "./HeartRateChart.module.css";
 
 const JOURS = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
 
 export default function HeartRateChart() {
   const [heartRates, setHeartRates] = useState<UserActivity[]>([]);
+  const [currentDate, setCurrentDate] = useState<Date>(
+    () => getWeekRange(new Date()).monday,
+  );
+  const [loading, setLoading] = useState(false);
+
+  const { authToken } = useAuth();
+  const { monday, sunday } = getWeekRange(currentDate);
 
   useEffect(() => {
-    setHeartRates(MOCK_USER_ACTIVITY);
-  }, []);
+    if (!authToken) return;
+    const start = monday.toISOString().split("T")[0];
+    const end = sunday.toISOString().split("T")[0];
+    setLoading(true);
+    fetchUserActivity(authToken, start, end)
+      .then((data) => setHeartRates(data))
+      .catch((err) => console.error("HeartRateChart fetch error:", err))
+      .finally(() => setLoading(false));
+  }, [currentDate, authToken]);
 
-  const data = heartRates.map((activity) => ({
-    date: activity.date,
-    min: activity.heartRate.min,
-    max: activity.heartRate.max,
-    average: activity.heartRate.average,
-  }));
+  const goToPrevWeek = () => {
+    setCurrentDate((prev) => {
+      const d = new Date(prev);
+      d.setDate(d.getDate() - 7);
+      return d;
+    });
+  };
 
+  const goToNextWeek = () => {
+    setCurrentDate((prev) => {
+      const d = new Date(prev);
+      d.setDate(d.getDate() + 7);
+      return d;
+    });
+  };
+
+  // 🔹 Génère les 7 jours de la semaine (Lun → Dim)
+  const weekDays = Array.from({ length: 7 }).map((_, i) => {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    return d;
+  });
+
+  // 🔹 Construit les données finales avec fallback à 0
+  const data = weekDays.map((day) => {
+    const iso = day.toISOString().split("T")[0];
+
+    const found = heartRates?.find((h) => h.date === iso);
+
+    return {
+      date: iso,
+      min: found?.heartRate.min ?? 0,
+      max: found?.heartRate.max ?? 0,
+      average: found?.heartRate.average ?? 0,
+    };
+  });
+
+  // 🔹 Moyenne BPM
   const avgBPM =
     data.length > 0
       ? Math.round(data.reduce((acc, d) => acc + d.average, 0) / data.length)
@@ -36,21 +83,20 @@ export default function HeartRateChart() {
 
   return (
     <div className={styles.heartRateChart}>
-      {/* En-tête */}
       <div className={styles.header}>
-        <div>
-          {/* Titre en rouge comme la maquette */}
-          <h2 className={styles.title}>{avgBPM} BPM</h2>
+        <div className={styles.titleBlock}>
+          <h2 className={styles.title}>{loading ? "..." : `${avgBPM} BPM`}</h2>
           <p className={styles.subtitle}>Fréquence cardiaque moyenne</p>
         </div>
         <div className={styles.nav}>
-          <button>&#8249;</button>
-          <span>28 mai - 04 juin</span>
-          <button>&#8250;</button>
+          <button onClick={goToPrevWeek}>&#8249;</button>
+          <span>
+            {formatDateShort(monday)} - {formatDateShort(sunday)}
+          </span>
+          <button onClick={goToNextWeek}>&#8250;</button>
         </div>
       </div>
 
-      {/* Graphique */}
       <ResponsiveContainer width="100%" height={307}>
         <ComposedChart
           data={data}
@@ -70,23 +116,22 @@ export default function HeartRateChart() {
             tickLine={false}
             tick={{ fontSize: 12 }}
             tickFormatter={(dateStr) => {
-              const jours = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
               const date = new Date(dateStr);
-              return jours[date.getDay()];
+              return JOURS[date.getDay()];
             }}
           />
           <YAxis
             axisLine={{ stroke: "#333" }}
             tickLine={false}
             tick={{ fontSize: 10 }}
-            domain={["auto", "auto"]}
+            domain={([dataMin, dataMax]) => [
+              Math.max(0, dataMin - 20),
+              dataMax + 10,
+            ]}
           />
           <Tooltip cursor={false} />
-
           <Bar dataKey="min" fill="#FFCCC7" radius={[6, 6, 0, 0]} />
           <Bar dataKey="max" fill="#E84335" radius={[6, 6, 0, 0]} />
-
-          
           <Line
             type="monotone"
             dataKey="average"
@@ -97,6 +142,7 @@ export default function HeartRateChart() {
           />
         </ComposedChart>
       </ResponsiveContainer>
+
       <div className={styles.legend}>
         <span>
           <span className={styles.dotMin}></span> Min
