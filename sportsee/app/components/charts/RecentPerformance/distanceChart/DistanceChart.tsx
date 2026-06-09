@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Rectangle, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useAuth } from "../../../../context/authContext";
 import { fetchUserActivity } from "../../../../services/api";
-import { getWeekRange, formatDateISO, formatDateLong } from "../../../../utils/dateHelpers";
+import { getFourWeekRange, formatDateISO, formatDateShort } from "../../../../utils/dateHelpers";
 import type { UserActivity } from "../../../../hooks/useUserData";
 import styles from "./DistanceChart.module.css";
 
@@ -12,9 +12,11 @@ export default function DistanceChart() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [activityData, setActivityData] = useState<UserActivity[] | null>(null);
 
-  const { monday, sunday } = getWeekRange(currentDate);
-  const startWeek = formatDateISO(monday);
-  const endWeek = formatDateISO(sunday);
+
+  const { start, end } = getFourWeekRange(currentDate);
+  const startWeek = formatDateISO(start);
+  const endWeek = formatDateISO(end);
+
 
   useEffect(() => {
     if (!authToken) return;
@@ -25,15 +27,45 @@ export default function DistanceChart() {
     fetchData();
   }, [authToken, startWeek, endWeek]);
 
-  const formatted = activityData?.map((session, index) => ({
-    semaine: `S${index + 1}`,
-    distance: session.distance,
-  })) ?? [];
+  
+  function generateWeekRanges(start: Date) {
+    const weeks = [];
+    for (let i = 0; i < 4; i++) {
+      const weekStart = new Date(start);
+      weekStart.setDate(start.getDate() + i * 7);
 
-  const avgDistance = formatted.length > 0
-    ? (formatted.reduce((acc, w) => acc + w.distance, 0) / formatted.length).toFixed(0)
-    : 0;
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekStart.getDate() + 6);
 
+      weeks.push({ start: weekStart, end: weekEnd });
+    }
+    return weeks;
+  }
+
+  
+  const weeks = generateWeekRanges(start);
+
+  const formatted = weeks.map((week, index) => {
+    const totalDistance =
+      activityData
+        ?.filter((session) => {
+          const d = new Date(session.date);
+          return d >= week.start && d <= week.end;
+        })
+        .reduce((acc, s) => acc + s.distance, 0) || 0;
+
+    return {
+      semaine: `S${index + 1}`,
+      distance: totalDistance,
+    };
+  });
+
+  
+  const avgDistance = (
+    formatted.reduce((acc, w) => acc + w.distance, 0) / 4
+  ).toFixed(0);
+
+  
   function goToPrevWeek() {
     const d = new Date(currentDate);
     d.setDate(d.getDate() - 7);
@@ -49,13 +81,14 @@ export default function DistanceChart() {
   return (
     <div className={styles.distanceChart}>
       <div className={styles.header}>
-        <div>
+        <div className={styles.titleBlock}>
           <h2 className={styles.title}>{avgDistance}km en moyenne</h2>
           <p className={styles.subtitle}>Total des kilomètres 4 dernières semaines</p>
         </div>
+
         <div className={styles.nav}>
           <button onClick={goToPrevWeek}>&#8249;</button>
-          <span>{formatDateLong(monday)} - {formatDateLong(sunday)}</span>
+          <span>{formatDateShort(start)} - {formatDateShort(end)}</span>
           <button onClick={goToNextWeek}>&#8250;</button>
         </div>
       </div>
