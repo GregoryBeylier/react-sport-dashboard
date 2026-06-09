@@ -107,3 +107,10 @@ display: flex;
   border-radius: 50%;
   background-color: #3D3DFF;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  padding: 20px;
+  text-align: center;
+}

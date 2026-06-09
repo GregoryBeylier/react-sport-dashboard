@@ -10,48 +10,39 @@ export default function DonutChart() {
   const [target, setTarget] = useState<number>(7);
   const [completed, setCompleted] = useState<number>(0);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const { authToken } = useAuth();
 
-  
   const { monday, sunday } = getWeekRange(new Date());
   const start = monday.toISOString().split("T")[0];
   const end = sunday.toISOString().split("T")[0];
 
   useEffect(() => {
     if (!authToken) return;
-
     setLoading(true);
-
     Promise.all([
-     
       fetchUserInfo(authToken),
-      
       fetchUserActivity(authToken, start, end),
     ])
       .then(([userInfo, activities]) => {
-        
-        const goal =
-          userInfo?.weeklyGoal ?? userInfo?.goal ?? 7;
+        const goal = userInfo?.weeklyGoal ?? userInfo?.goal ?? 7;
         setTarget(goal);
-
-       
-        const count = Array.isArray(activities)
-          ? activities.length
-          : 0;
+        const count = Array.isArray(activities) ? activities.length : 0;
         setCompleted(count);
       })
-      .catch((err) => console.error("DonutChart fetch error:", err))
+      .catch(() => setError("Impossible de charger les données"))
       .finally(() => setLoading(false));
   }, [authToken]);
 
-  
   const remaining = Math.max(0, target - completed);
 
   const donutData = [
     { name: "restantes", value: remaining, fill: "#B6BDFC" },
     { name: "Réalisées", value: completed, fill: "#0B23F4" },
   ];
+
+  if (error) return <p className={styles.error}>{error}</p>;
 
   return (
     <div className={styles.wrapper}>
@@ -64,27 +55,12 @@ export default function DonutChart() {
         </p>
         <p className={styles.subtitle}>Courses hebdomadaire réalisées</p>
       </div>
-
       <div className={styles.chartContainer}>
-        <PieChart
-          width={400}
-          height={260}
-          margin={{ top: 0, right: 100, bottom: 60, left: 40 }}
-        >
-          <Pie
-            startAngle={110}
-            endAngle={-260}
-            data={donutData}
-            dataKey="value"
-            nameKey="name"
-            innerRadius={30}
-            outerRadius={70}
-            cx="45%"
-            cy="45%"
-            label={({
-              cx, cy, midAngle = 0,
-              outerRadius, name, value, fill,
-            }: any) => {
+        <PieChart width={400} height={260} margin={{ top: 0, right: 100, bottom: 60, left: 40 }}>
+          <Pie startAngle={110} endAngle={-260}
+            data={donutData} dataKey="value" nameKey="name"
+            innerRadius={30} outerRadius={70} cx="45%" cy="45%"
+            label={({ cx, cy, midAngle = 0, outerRadius, name, value, fill }: any) => {
               const RADIAN = Math.PI / 180;
               const distance = outerRadius + 25;
               const x = cx + distance * Math.cos(-midAngle * RADIAN);
@@ -95,16 +71,9 @@ export default function DonutChart() {
               return (
                 <g>
                   <circle cx={x + dotOffset} cy={y} r={3} fill={fill} />
-                  <text
-                    x={x}
-                    y={y}
-                    textAnchor={textAnchor}
-                    dominantBaseline="central"
-                    fontSize={10}
-                    fill="#707070"
-                    fontWeight={500}
-                    fontFamily="Inter"
-                  >
+                  <text x={x} y={y} textAnchor={textAnchor}
+                    dominantBaseline="central" fontSize={10}
+                    fill="#707070" fontWeight={500} fontFamily="Inter">
                     {value} {name}
                   </text>
                 </g>

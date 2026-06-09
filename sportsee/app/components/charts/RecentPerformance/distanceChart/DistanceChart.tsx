@@ -11,38 +11,39 @@ export default function DistanceChart() {
   const [hovered, setHovered] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [activityData, setActivityData] = useState<UserActivity[] | null>(null);
-
+  const [error, setError] = useState<string | null>(null);
 
   const { start, end } = getFourWeekRange(currentDate);
   const startWeek = formatDateISO(start);
   const endWeek = formatDateISO(end);
 
-
   useEffect(() => {
     if (!authToken) return;
+
     async function fetchData() {
-      const data = await fetchUserActivity(authToken!, startWeek, endWeek);
-      setActivityData(data);
+      try {
+        const data = await fetchUserActivity(authToken!, startWeek, endWeek);
+        setActivityData(data);
+      } catch {
+        setError("Impossible de charger les données");
+      }
     }
+
     fetchData();
   }, [authToken, startWeek, endWeek]);
 
-  
   function generateWeekRanges(start: Date) {
     const weeks = [];
     for (let i = 0; i < 4; i++) {
       const weekStart = new Date(start);
       weekStart.setDate(start.getDate() + i * 7);
-
       const weekEnd = new Date(weekStart);
       weekEnd.setDate(weekStart.getDate() + 6);
-
       weeks.push({ start: weekStart, end: weekEnd });
     }
     return weeks;
   }
 
-  
   const weeks = generateWeekRanges(start);
 
   const formatted = weeks.map((week, index) => {
@@ -53,19 +54,13 @@ export default function DistanceChart() {
           return d >= week.start && d <= week.end;
         })
         .reduce((acc, s) => acc + s.distance, 0) || 0;
-
-    return {
-      semaine: `S${index + 1}`,
-      distance: totalDistance,
-    };
+    return { semaine: `S${index + 1}`, distance: totalDistance };
   });
 
-  
   const avgDistance = (
     formatted.reduce((acc, w) => acc + w.distance, 0) / 4
   ).toFixed(0);
 
-  
   function goToPrevWeek() {
     const d = new Date(currentDate);
     d.setDate(d.getDate() - 7);
@@ -78,6 +73,8 @@ export default function DistanceChart() {
     setCurrentDate(d);
   }
 
+  if (error) return <p className={styles.error}>{error}</p>;
+
   return (
     <div className={styles.distanceChart}>
       <div className={styles.header}>
@@ -85,7 +82,6 @@ export default function DistanceChart() {
           <h2 className={styles.title}>{avgDistance}km en moyenne</h2>
           <p className={styles.subtitle}>Total des kilomètres 4 dernières semaines</p>
         </div>
-
         <div className={styles.nav}>
           <button onClick={goToPrevWeek}>&#8249;</button>
           <span>{formatDateShort(start)} - {formatDateShort(end)}</span>

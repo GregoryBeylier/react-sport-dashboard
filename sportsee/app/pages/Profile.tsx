@@ -13,37 +13,33 @@ export default function Profile() {
   const { authToken } = useAuth();
   const { firstName, lastName, isLoading, createdAt, photoProfile } = useUser();
 
-  // State local pour les infos détaillées du profil
   const [userInfo, setUserInfo] = useState<UserData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authToken) return;
 
     async function fetchData() {
-      // On appelle fetchUserInfo avec le token
-      const data = await fetchUserInfo(authToken!);
-      // On stocke le résultat dans le state
-      setUserInfo(data);
+      try {
+        const data = await fetchUserInfo(authToken!);
+        setUserInfo(data);
+      } catch {
+        setError("Impossible de charger le profil");
+      }
     }
 
     fetchData();
-  }, [authToken]); // ⚠️ userInfo ne doit PAS être en dépendance — boucle infinie !
+  }, [authToken]);
 
-  if (isLoading) {
-    return <div>Chargement...</div>;
-  }
+  if (isLoading) return <div>Chargement...</div>;
+  if (error) return <p className={styles.error}>{error}</p>;
 
   return (
     <div className={`${styles.profilePage} ${styles.fadeIn}`}>
       <div className={styles.leftColumn}>
-
         <div className={`${styles.card} ${styles.avatarCard}`}>
           <div className={styles.avatarWrapper}>
-            <img
-              src={photoProfile ?? defaultPhoto}
-              alt={firstName}
-              className={styles.avatar}
-            />
+            <img src={photoProfile ?? defaultPhoto} alt={firstName} className={styles.avatar} />
           </div>
           <div>
             <p className={styles.userName}>{firstName} {lastName}</p>
@@ -53,14 +49,12 @@ export default function Profile() {
             </p>
           </div>
         </div>
-
         <div className={`${styles.card} ${styles.cardProfile}`}>
           <p className={styles.profileTitle}>Votre profil</p>
           <hr className={styles.divider} />
           <ProfileCard userInfo={userInfo} />
         </div>
       </div>
-
       <div className={styles.rightColumn}>
         <p className={styles.statsTitle}>Vos statistiques</p>
         <p className={styles.statsSubtitle}>

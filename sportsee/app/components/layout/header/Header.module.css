@@ -32,7 +32,12 @@
 }
 
 .navLink {
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  transition: color 5 ease;
+}
+
+.navLink:hover {
+  color: #0B23F4;
 }

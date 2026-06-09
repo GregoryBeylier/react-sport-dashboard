@@ -31,3 +31,10 @@
   font-weight: 500;
   color: #707070;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  padding: 20px;
+  text-align: center;
+}
